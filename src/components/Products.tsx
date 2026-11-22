@@ -31,7 +31,7 @@ function ProductCard({ product }: { product: Product }) {
       onClick={(e) => e.preventDefault()}
       onMouseMove={onMove}
       onMouseLeave={onLeave}
-      className="product-card group relative flex w-[78vw] sm:w-[24rem] shrink-0 flex-col overflow-hidden rounded-2xl bg-ink-800/70 border border-white/[0.06] transition-colors duration-500 hover:border-violet-glow/40 hover:shadow-[0_20px_60px_-20px_rgba(139,92,246,0.35)]"
+      className="product-card group relative flex w-[78vw] sm:w-[24rem] shrink-0 flex-col overflow-hidden rounded-2xl bg-elevated/80 border border-line/10 transition-colors duration-500 hover:border-violet-glow/40 hover:shadow-[0_20px_60px_-20px_rgba(139,92,246,0.35)]"
       style={{ transformStyle: 'preserve-3d' }}
     >
       <div className="relative aspect-[16/10] overflow-hidden">
@@ -43,9 +43,9 @@ function ProductCard({ product }: { product: Product }) {
             className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
           />
         ) : (
-          <div className="h-full w-full bg-gradient-to-br from-ink-700 to-night-900" />
+          <div className="h-full w-full bg-gradient-to-br from-strong to-surface" />
         )}
-        <div className="absolute inset-0 bg-gradient-to-t from-ink-800 via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-elevated via-transparent to-transparent" />
         <div className="absolute left-3 top-3 flex gap-2">
           {product.is_featured && (
             <span className="inline-flex items-center gap-1 rounded-full bg-violet-glow/90 px-2.5 py-1 text-[11px] font-semibold text-white shadow-lg">
@@ -63,25 +63,25 @@ function ProductCard({ product }: { product: Product }) {
       <div className="flex flex-1 flex-col p-6">
         <div className="flex items-center justify-between gap-3">
           {product.category?.name && (
-            <span className="text-[11px] font-medium uppercase tracking-[0.18em] text-cyan-400">
+            <span className="text-[11px] font-medium uppercase tracking-[0.18em] text-cyan-600 dark:text-cyan-400">
               {product.category.name}
             </span>
           )}
           {product.creator_name && (
-            <span className="truncate text-xs text-slate-500">by {product.creator_name}</span>
+            <span className="truncate text-xs text-faint">by {product.creator_name}</span>
           )}
         </div>
-        <h3 className="mt-2.5 font-display text-xl font-semibold tracking-tight text-white group-hover:text-violet-300 transition-colors">
+        <h3 className="mt-2.5 font-display text-xl font-semibold tracking-tight text-heading group-hover:text-violet-600 dark:group-hover:text-violet-300 transition-colors">
           {product.title}
         </h3>
-        <p className="mt-2 text-sm leading-relaxed text-slate-400 line-clamp-2 flex-1">
+        <p className="mt-2 text-sm leading-relaxed text-muted line-clamp-2 flex-1">
           {product.description}
         </p>
         <div className="mt-5 flex items-center justify-between">
-          <span className="font-display text-2xl font-bold text-white">
+          <span className="font-display text-2xl font-bold text-heading">
             ${Number(product.price).toFixed(0)}
           </span>
-          <span className="inline-flex items-center gap-1.5 rounded-full border border-white/10 px-4 py-2 text-sm text-slate-200 group-hover:border-transparent group-hover:bg-gradient-to-r group-hover:from-violet-glow group-hover:to-cyan-neon group-hover:text-white transition-all duration-300">
+          <span className="inline-flex items-center gap-1.5 rounded-full border border-line/20 px-4 py-2 text-sm text-content group-hover:border-transparent group-hover:bg-gradient-to-r group-hover:from-violet-glow group-hover:to-cyan-neon group-hover:text-white transition-all duration-300">
             View Product
             <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
           </span>
@@ -135,19 +135,19 @@ export function Products({ products }: { products: Product[] }) {
       <div className="absolute top-0 right-0 h-[500px] w-[500px] rounded-full bg-violet-glow/[0.07] blur-[160px] pointer-events-none" />
       <div className="lg:h-screen lg:flex lg:flex-col lg:justify-center">
         <div className="mx-auto w-full max-w-7xl px-6 pt-24 lg:pt-0">
-          <div className="text-xs font-medium uppercase tracking-[0.25em] text-cyan-400">
+          <div className="text-xs font-medium uppercase tracking-[0.25em] text-cyan-600 dark:text-cyan-400">
             Featured Products
           </div>
           <div className="mt-3 flex flex-wrap items-end justify-between gap-4">
-            <h2 className="font-display text-4xl sm:text-5xl font-bold tracking-tight text-white">
+            <h2 className="font-display text-4xl sm:text-5xl font-bold tracking-tight text-heading">
               Discover <span className="text-gradient">Exceptional</span> Websites
             </h2>
-            <p className="hidden lg:flex items-center gap-2 text-sm text-slate-500">
+            <p className="hidden lg:flex items-center gap-2 text-sm text-faint">
               Keep scrolling to browse
               <ArrowRight size={15} className="text-violet-400 animate-pulse" />
             </p>
           </div>
-          <p className="mt-4 max-w-md text-slate-400">
+          <p className="mt-4 max-w-md text-muted">
             Handpicked digital products ready for your next big idea.
           </p>
         </div>

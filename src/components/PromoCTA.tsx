@@ -23,7 +23,7 @@ export function PromoCTA() {
 
   return (
     <section ref={ref} className="relative px-6 py-16 sm:py-24">
-      <div className="relative mx-auto max-w-7xl overflow-hidden rounded-[2rem] bg-gradient-to-br from-[#1b0b3a] via-[#120826] to-[#04040b] border border-white/[0.08] noise">
+      <div className="relative mx-auto max-w-7xl overflow-hidden rounded-[2rem] bg-gradient-to-br from-violet-glow/15 via-fuchsia-500/10 to-base border border-line/10 noise">
         <div className="promo-orb absolute -top-24 right-[15%] h-72 w-72 rounded-full bg-violet-glow/30 blur-[100px]" />
         <div className="promo-orb absolute -bottom-28 left-[10%] h-80 w-80 rounded-full bg-cyan-neon/20 blur-[110px]" />
 
@@ -33,12 +33,12 @@ export function PromoCTA() {
         <div className="absolute top-1/3 right-[28%] hidden md:block h-5 w-5 rounded-sm bg-fuchsia-400/30 rotate-45 animate-float" style={{ animationDelay: '2.6s' }} />
 
         <div className="promo-inner relative z-10 mx-auto max-w-3xl px-8 py-20 sm:py-28 text-center">
-          <h2 className="font-display text-4xl sm:text-6xl font-bold tracking-tight text-white leading-[1.08]">
+          <h2 className="font-display text-4xl sm:text-6xl font-bold tracking-tight text-heading leading-[1.08]">
             Your Next Digital Product
             <br />
             <span className="text-gradient">Is Waiting.</span>
           </h2>
-          <p className="mx-auto mt-6 max-w-xl text-slate-400 text-base sm:text-lg leading-relaxed">
+          <p className="mx-auto mt-6 max-w-xl text-muted text-base sm:text-lg leading-relaxed">
             Explore exceptional websites and find the perfect starting point for
             your next project.
           </p>

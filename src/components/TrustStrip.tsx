@@ -28,14 +28,14 @@ export function TrustStrip() {
   }, []);
 
   return (
-    <div ref={ref} className="relative border-y border-white/[0.06] bg-night-900/60">
+    <div ref={ref} className="relative border-y border-line/10 bg-surface/60">
       <div className="mx-auto grid max-w-7xl grid-cols-2 lg:grid-cols-4 gap-y-6 px-6 py-8">
         {items.map(({ icon: Icon, label }) => (
           <div key={label} className="trust-item flex items-center justify-center gap-3 px-4">
-            <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-violet-glow/20 to-cyan-neon/20 text-cyan-300">
+            <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-violet-glow/20 to-cyan-neon/20 text-cyan-600 dark:text-cyan-300">
               <Icon size={17} />
             </span>
-            <span className="text-sm text-slate-300 font-medium">{label}</span>
+            <span className="text-sm text-content font-medium">{label}</span>
           </div>
         ))}
       </div>

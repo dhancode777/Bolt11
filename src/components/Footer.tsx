@@ -20,7 +20,7 @@ const columns = [
 
 export function Footer() {
   return (
-    <footer className="relative border-t border-white/[0.06] bg-night-900/60">
+    <footer className="relative border-t border-line/10 bg-surface/60">
       <div className="mx-auto max-w-7xl px-6 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           <div className="lg:col-span-2">
@@ -28,11 +28,11 @@ export function Footer() {
               <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-violet-glow to-cyan-neon text-night-950 font-display font-bold text-lg">
                 M
               </span>
-              <span className="font-display font-semibold text-lg text-white">
+              <span className="font-display font-semibold text-lg text-heading">
                 Market<span className="text-gradient">Palce</span>
               </span>
             </div>
-            <p className="mt-5 max-w-sm text-sm leading-relaxed text-slate-400">
+            <p className="mt-5 max-w-sm text-sm leading-relaxed text-muted">
               A premium marketplace connecting talented creators with people
               looking for exceptional ready-made websites.
             </p>
@@ -40,7 +40,7 @@ export function Footer() {
 
           {columns.map((col) => (
             <div key={col.title}>
-              <h3 className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">
+              <h3 className="text-xs font-semibold uppercase tracking-[0.2em] text-faint">
                 {col.title}
               </h3>
               <ul className="mt-5 space-y-3">
@@ -48,7 +48,7 @@ export function Footer() {
                   <li key={l.label}>
                     <a
                       href={l.href}
-                      className="inline-block text-sm text-slate-400 transition-all duration-300 hover:text-cyan-300 hover:translate-x-1"
+                      className="inline-block text-sm text-muted transition-all duration-300 hover:text-cyan-600 dark:hover:text-cyan-300 hover:translate-x-1"
                     >
                       {l.label}
                     </a>
@@ -59,9 +59,9 @@ export function Footer() {
           ))}
         </div>
 
-        <div className="mt-14 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+        <div className="mt-14 h-px bg-gradient-to-r from-transparent via-line/20 to-transparent" />
 
-        <div className="mt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-600">
+        <div className="mt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-faint">
           <span>&copy; {new Date().getFullYear()} MarketPalce. All rights reserved.</span>
           <span>Crafted with care for creators and buyers worldwide.</span>
         </div>

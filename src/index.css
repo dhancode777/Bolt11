@@ -5,16 +5,38 @@
 @tailwind utilities;
 
 :root {
+  /* dark theme (default) */
+  --base: 4 4 11;
+  --surface: 8 8 18;
+  --elevated: 16 16 36;
+  --strong: 24 24 50;
+  --heading: 255 255 255;
+  --content: 226 232 240;
+  --muted: 148 163 184;
+  --faint: 110 124 148;
+  --line: 255 255 255;
+  --glass: 255 255 255;
   color-scheme: dark;
 }
 
-html {
-  background: #04040b;
+html.light {
+  --base: 247 247 252;
+  --surface: 255 255 255;
+  --elevated: 255 255 255;
+  --strong: 238 238 247;
+  --heading: 13 13 31;
+  --content: 39 48 74;
+  --muted: 90 100 130;
+  --faint: 130 140 165;
+  --line: 13 13 31;
+  --glass: 13 13 31;
+  color-scheme: light;
 }
 
 body {
-  @apply bg-night-950 text-slate-200 font-body antialiased;
+  @apply bg-base text-content font-body antialiased;
   overflow-x: hidden;
+  transition: background-color 0.4s ease, color 0.4s ease;
 }
 
 ::selection {
@@ -26,25 +48,30 @@ body {
   width: 10px;
 }
 ::-webkit-scrollbar-track {
-  background: #080812;
+  background: rgb(var(--surface));
 }
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #2a2a55, #1a1a38);
+  background: rgb(var(--line) / 0.2);
   border-radius: 8px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #3a3a70;
+  background: rgb(var(--line) / 0.35);
 }
 
 @layer utilities {
   .glass {
-    @apply bg-white/[0.04] backdrop-blur-xl border border-white/[0.08];
+    background: rgb(var(--glass) / 0.05);
+    @apply backdrop-blur-xl border border-glass/10;
   }
   .glass-strong {
-    @apply bg-[#0d0d1f]/70 backdrop-blur-2xl border border-white/[0.1];
+    background: rgb(var(--glass) / 0.06);
+    @apply backdrop-blur-2xl border border-glass/15;
   }
   .text-gradient {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-violet-400 via-fuchsia-300 to-cyan-300;
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-violet-400 via-fuchsia-300 to-cyan-500;
+  }
+  .hero-fade {
+    background: radial-gradient(ellipse at top, transparent 0%, rgb(var(--base)) 78%);
   }
   .noise::after {
     content: '';

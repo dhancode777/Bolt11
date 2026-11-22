@@ -59,20 +59,20 @@ export function CreatorSection() {
   }, []);
 
   return (
-    <section ref={ref} id="creators" className="relative overflow-hidden noise bg-night-950">
+    <section ref={ref} id="creators" className="relative overflow-hidden noise bg-base">
       <div className="absolute bottom-0 left-1/4 h-96 w-96 rounded-full bg-fuchsia-500/10 blur-[150px] pointer-events-none" />
       <div className="relative lg:h-screen lg:flex lg:items-center">
         <div className="mx-auto grid w-full max-w-7xl grid-cols-1 lg:grid-cols-2 items-center gap-14 px-6 py-24 lg:py-0">
           <div className="creator-copy">
-            <div className="text-xs font-medium uppercase tracking-[0.25em] text-fuchsia-400">
+            <div className="text-xs font-medium uppercase tracking-[0.25em] text-fuchsia-500 dark:text-fuchsia-400">
               For Creators
             </div>
-            <h2 className="mt-3 font-display text-4xl sm:text-5xl font-bold tracking-tight text-white leading-[1.1]">
+            <h2 className="mt-3 font-display text-4xl sm:text-5xl font-bold tracking-tight text-heading leading-[1.1]">
               Create Something Great.
               <br />
               <span className="text-gradient">Get Paid for It.</span>
             </h2>
-            <p className="mt-5 max-w-md text-slate-400 leading-relaxed">
+            <p className="mt-5 max-w-md text-muted leading-relaxed">
               Turn your website projects into opportunities. Upload your creations,
               reach new buyers and earn from your work.
             </p>
@@ -88,22 +88,22 @@ export function CreatorSection() {
           <div className="flow-panel relative rounded-3xl glass-strong p-8 sm:p-10 overflow-hidden">
             <div className="absolute -top-20 -right-20 h-56 w-56 rounded-full bg-violet-glow/20 blur-[80px]" />
             <div className="relative">
-              <div className="text-xs uppercase tracking-[0.2em] text-slate-500">
+              <div className="text-xs uppercase tracking-[0.2em] text-faint">
                 Creator Dashboard — Scroll to replay the journey
               </div>
               <div className="relative mt-8 space-y-0">
                 <div className="flow-connector absolute left-[1.35rem] top-4 bottom-4 w-px bg-gradient-to-b from-violet-glow via-fuchsia-400 to-cyan-neon opacity-60" />
                 {flow.map(({ icon: Icon, label, hint }) => (
                   <div key={label} className="flow-node relative flex items-center gap-4 py-3.5">
-                    <span className="relative z-10 flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-white/10 bg-ink-700 text-violet-300">
+                    <span className="relative z-10 flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-line/15 bg-elevated text-violet-500 dark:text-violet-300">
                       <Icon size={18} strokeWidth={1.7} />
                     </span>
-                    <div className="flex-1 rounded-xl bg-ink-800/80 border border-white/[0.05] px-4 py-3">
+                    <div className="flex-1 rounded-xl bg-elevated/80 border border-line/10 px-4 py-3">
                       <div className="flex items-baseline justify-between gap-3">
-                        <span className="text-sm font-medium text-slate-200">{label}</span>
-                        <span className="hidden sm:block text-[11px] text-slate-500">{hint}</span>
+                        <span className="text-sm font-medium text-content">{label}</span>
+                        <span className="hidden sm:block text-[11px] text-faint">{hint}</span>
                       </div>
-                      <div className="mt-1.5 h-1.5 w-full overflow-hidden rounded-full bg-white/[0.06]">
+                      <div className="mt-1.5 h-1.5 w-full overflow-hidden rounded-full bg-heading/10">
                         <div className="flow-fill h-full w-full origin-left rounded-full bg-gradient-to-r from-violet-glow to-cyan-neon" />
                       </div>
                     </div>
