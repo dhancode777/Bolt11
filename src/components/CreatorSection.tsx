@@ -17,12 +17,13 @@ export function CreatorSection() {
   const ref = useRef<HTMLElement>(null);
 
   useEffect(() => {
-    const ctx = gsap.context(() => {
-      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const mm = gsap.matchMedia();
+
+    mm.add('(min-width: 1024px) and (prefers-reduced-motion: no-preference)', () => {
       const nodes = gsap.utils.toArray<HTMLElement>('.flow-node');
       const barFills = gsap.utils.toArray<HTMLElement>('.flow-fill');
-      const copy = ref.current?.querySelector('.creator-copy');
 
+      const copy = ref.current?.querySelector('.creator-copy');
       if (copy) {
         gsap.from(copy.children, {
           scrollTrigger: { trigger: ref.current, start: 'top 70%' },
@@ -54,8 +55,28 @@ export function CreatorSection() {
           )
           .to({}, { duration: 0.3 });
       });
-    }, ref);
-    return () => ctx.revert();
+    });
+
+    mm.add('(max-width: 1023px) and (prefers-reduced-motion: no-preference)', () => {
+      gsap.from('.flow-node', {
+        scrollTrigger: { trigger: '.flow-panel', start: 'top 80%' },
+        y: 32, opacity: 0, duration: 0.7, stagger: 0.12, ease: 'power3.out',
+      });
+      gsap.fromTo(
+        '.flow-fill',
+        { scaleX: 0 },
+        {
+          scrollTrigger: { trigger: '.flow-panel', start: 'top 75%' },
+          scaleX: (i: number) => [85, 70, 95, 60, 45][i] / 100,
+          duration: 1,
+          stagger: 0.12,
+          ease: 'power2.inOut',
+          transformOrigin: 'left center',
+        }
+      );
+    });
+
+    return () => mm.revert();
   }, []);
 
   return (

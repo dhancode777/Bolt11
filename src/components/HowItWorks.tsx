@@ -33,8 +33,9 @@ export function HowItWorks() {
   const ref = useRef<HTMLElement>(null);
 
   useEffect(() => {
-    const ctx = gsap.context(() => {
-      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const mm = gsap.matchMedia();
+
+    mm.add('(min-width: 1024px) and (prefers-reduced-motion: no-preference)', () => {
       const panels = gsap.utils.toArray<HTMLElement>('.hiw-panel');
       const dots = gsap.utils.toArray<HTMLElement>('.hiw-dot');
 
@@ -61,8 +62,16 @@ export function HowItWorks() {
           .to(panels[i], { autoAlpha: 1, y: 0, scale: 1, duration: 0.45, ease: 'power2.out' }, '<0.1')
           .to({}, { duration: 0.35 });
       });
-    }, ref);
-    return () => ctx.revert();
+    });
+
+    mm.add('(max-width: 1023px) and (prefers-reduced-motion: no-preference)', () => {
+      gsap.from('.hiw-panel', {
+        scrollTrigger: { trigger: '.hiw-panels', start: 'top 80%' },
+        y: 40, opacity: 0, duration: 0.8, stagger: 0.18, ease: 'power3.out',
+      });
+    });
+
+    return () => mm.revert();
   }, []);
 
   return (
@@ -83,11 +92,11 @@ export function HowItWorks() {
             Your next website is just a few steps away.
           </p>
 
-          <div className="relative mt-12 flex-1">
+          <div className="hiw-panels relative mt-12 space-y-16 lg:space-y-0 lg:flex-1">
             {steps.map(({ num, icon: Icon, title, desc, accent }, i) => (
               <div
                 key={num}
-                className="hiw-panel absolute inset-x-0 top-0 lg:inset-y-0 lg:my-auto"
+                className="hiw-panel lg:absolute lg:inset-x-0 lg:inset-y-0 lg:my-auto"
               >
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
                   <div>
@@ -114,7 +123,7 @@ export function HowItWorks() {
             ))}
           </div>
 
-          <div className="mt-10 flex items-center gap-3">
+          <div className="mt-10 hidden lg:flex items-center gap-3">
             {steps.map(({ num }) => (
               <div key={num} className="flex items-center gap-3">
                 <span className="hiw-dot h-2 w-2 rounded-full bg-heading/15 transition-colors duration-300" />
